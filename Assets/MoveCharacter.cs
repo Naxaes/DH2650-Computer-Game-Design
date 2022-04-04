@@ -25,7 +25,7 @@ public class MoveCharacter : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y + 0.1f);
+            transform.position = new Vector2(transform.position.x, transform.position.y + 0.05f);
         }
     }
 }
