@@ -17,15 +17,15 @@ public class MoveCharacter : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position = new Vector2(transform.position.x - 0.1f, transform.position.y);
+            transform.position = new Vector2(transform.position.x - 0.04f, transform.position.y);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
+            transform.position = new Vector2(transform.position.x + 0.04f, transform.position.y);
         }
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position = new Vector2(transform.position.x, transform.position.y + 0.05f);
+            transform.position = new Vector2(transform.position.x, transform.position.y + 0.04f);
         }
     }
 }
