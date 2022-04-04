@@ -16,9 +16,9 @@ public class EnemyMovement : MonoBehaviour
     public float range = 7.0f;
     public float speed = 0.005f;
 
-
     float counter;
     int direction;
+
     // Start is called before the first frame update
     void Start()
     {   
