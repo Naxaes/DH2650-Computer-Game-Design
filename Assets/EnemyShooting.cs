@@ -29,6 +29,11 @@ public class EnemyShooting : MonoBehaviour
 
     void Update()
     {
+        FireProjectilesInIntervals();
+    }
+
+    void FireProjectilesInIntervals()
+    {
         direction = movement.direction;
         if (Time.time >= nextTime)
         {
