@@ -28,7 +28,12 @@ public class Blower : MonoBehaviour
     [SerializeField]
     public float maxDistance = 10f;
 
+    [SerializeField]
+    public Collider2D feet;
 
+    [SerializeField]
+    public LayerMask ground;
+    
     static Color RED = new Color(1f, 0f, 0f);
     static Color GREEN = new Color(0f, 1f, 0f);
 
@@ -40,7 +45,7 @@ public class Blower : MonoBehaviour
         Vector2 blowAnchor = new Vector2(transform.position.x, transform.position.y) + mouseDir * 0.2f;
         Vector2 blowVec = mouseDir * maxDistance;
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetButton("Fire1"))
         {
             Debug.DrawRay(blowAnchor + mouseDir.Rotate(90f) * radius, blowVec, RED);
             Debug.DrawRay(blowAnchor, blowVec, RED);
@@ -52,14 +57,15 @@ public class Blower : MonoBehaviour
             foreach (var collision in allCollisions)
             {
                 var collisionBody = collision.rigidbody;
+                if (collisionBody == null) continue;
 
                 // var attenuation = Mathf.Clamp(collision.distance * collision.distance, 1f, 100f);  // <- DOESN'T WORK!
 
                 var distance = Mathf.Clamp(Vector2.Distance(blowAnchor, new Vector2(collision.transform.position.x, collision.transform.position.y)), 1f, maxDistance);
-                var attenuation = distance * distance;
+                var attenuation = distance; // * distance;
                 if (collision.transform.gameObject != this.gameObject)
                     collisionBody.AddForce(mouseDir * force * (1 / attenuation));
-                else
+                else if (!feet.IsTouchingLayers(ground))
                     collisionBody.AddForce(-mouseDir * force);
             }
         }

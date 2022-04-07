@@ -38,22 +38,19 @@ public class EnemyShooting : MonoBehaviour
         if (Time.time >= nextTime)
         {
             nextTime += interval;
-            if (projectile)
+            Quaternion rotation = transform.rotation;
+            if (direction == -1)
             {
-                Quaternion rotation = transform.rotation;
-                if (direction == -1)
-                {
-                    rotation *= Quaternion.Euler(0, 180f, 0);
-                }
-                GameObject newProjectile = Instantiate(projectile, transform.position + target.right, rotation) as GameObject;
-                if (!newProjectile.GetComponent<Rigidbody>())
-                {
-                    newProjectile.AddComponent<Rigidbody>();
-                }
-                Rigidbody projectileRB = newProjectile.GetComponent<Rigidbody>();
-                projectileRB.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionY;
-                projectileRB.AddForce(target.right * power * -direction, ForceMode.VelocityChange);
+                rotation *= Quaternion.Euler(0, 180f, 0);
             }
+            GameObject newProjectile = Instantiate(projectile, transform.position + target.right, rotation) as GameObject;
+            if (!newProjectile.GetComponent<Rigidbody2D>())
+            {
+                newProjectile.AddComponent<Rigidbody2D>();
+            }
+            Rigidbody2D projectileRB = newProjectile.GetComponent<Rigidbody2D>();
+            projectileRB.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            projectileRB.AddForce(target.right * power * -direction, ForceMode2D.Impulse);
         }
     }
 }

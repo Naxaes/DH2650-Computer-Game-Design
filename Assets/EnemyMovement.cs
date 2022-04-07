@@ -94,6 +94,9 @@ public class EnemyMovement : MonoBehaviour
         {
             Roam();
         }
+
+        Debug.DrawLine(startPosition, startPosition - directionMemory * new Vector3(roamingRange, 0, 0), new Color(1.0f, 1.0f, 0.0f));
+        Debug.DrawLine(transform.position - new Vector3(visionRange * 0.5f, 0, 0), transform.position + new Vector3(visionRange * 0.5f, 0, 0), new Color(1.0f, 0.0f, 1.0f));
     }
 
     void Roam()

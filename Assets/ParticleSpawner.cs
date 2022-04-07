@@ -6,6 +6,7 @@ public class ParticleSpawner : MonoBehaviour
     public GameObject particle;
     public int maxActivePowerOfTwo;
     public float spawnsPerSecond;
+    public float spawnOffsetX;
 
     private Rigidbody2D[] allParticles;
     private int nextToKill = 0;
@@ -40,16 +41,15 @@ public class ParticleSpawner : MonoBehaviour
             if (filled)
             {
                 Rigidbody2D rb = allParticles[nextToKill];
-                rb.position = transform.position;
+                rb.position = transform.position + spawnOffsetX * (2.0f * Random.value - 1.0f) * Vector3.right;
                 rb.velocity = Vector3.zero;
-                rb.AddForce(force, ForceMode2D.Impulse);
             }
             else
             {
                 Rigidbody2D rb = Instantiate(particle, transform).GetComponent<Rigidbody2D>();
                 allParticles[nextToKill] = rb;
+                rb.position = transform.position + spawnOffsetX * (2.0f * Random.value - 1.0f) * Vector3.right;
                 rb.velocity = Vector3.zero;
-                rb.AddForce(force, ForceMode2D.Impulse);
             }
             nextToKill = (nextToKill + 1) & maxActiveMask;
 
