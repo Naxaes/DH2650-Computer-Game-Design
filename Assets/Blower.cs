@@ -33,9 +33,22 @@ public class Blower : MonoBehaviour
 
     [SerializeField]
     public LayerMask ground;
+
+    private GameObject[] myLine;
     
     static Color RED = new Color(1f, 0f, 0f);
     static Color GREEN = new Color(0f, 1f, 0f);
+
+    private void Start()
+    {
+        myLine = new GameObject[3];
+        myLine[0] = new GameObject();
+        myLine[0].AddComponent<LineRenderer>();
+        myLine[1] = new GameObject();
+        myLine[1].AddComponent<LineRenderer>();
+        myLine[2] = new GameObject();
+        myLine[2].AddComponent<LineRenderer>();
+    }
 
 
     void FixedUpdate()
@@ -43,13 +56,13 @@ public class Blower : MonoBehaviour
         Vector2 vecToMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         Vector2 mouseDir = vecToMouse.normalized;
         Vector2 blowAnchor = new Vector2(transform.position.x, transform.position.y) + mouseDir * 0.2f;
-        Vector2 blowVec = mouseDir * maxDistance;
+        Vector2 blowVec = blowAnchor + mouseDir * maxDistance;
 
         if (Input.GetButton("Fire1"))
         {
-            Debug.DrawRay(blowAnchor + mouseDir.Rotate(90f) * radius, blowVec, RED);
-            Debug.DrawRay(blowAnchor, blowVec, RED);
-            Debug.DrawRay(blowAnchor + mouseDir.Rotate(-90f) * radius, blowVec, RED);
+            DrawLine(myLine[0].GetComponent<LineRenderer>(), blowAnchor + mouseDir.Rotate(90f) * radius, blowVec + mouseDir.Rotate(90f) * radius, RED);
+            DrawLine(myLine[1].GetComponent<LineRenderer>(), blowAnchor, blowVec, RED);
+            DrawLine(myLine[2].GetComponent<LineRenderer>(), blowAnchor + mouseDir.Rotate(-90f) * radius, blowVec + mouseDir.Rotate(-90f) * radius, RED);
 
             var allCollisions = Physics2D.CircleCastAll(blowAnchor, radius, mouseDir, maxDistance);
             Debug.Log("Fire hit " + allCollisions.Length + " entities");
@@ -71,9 +84,25 @@ public class Blower : MonoBehaviour
         }
         else
         {
-            Debug.DrawRay(blowAnchor + mouseDir.Rotate(90f) * radius, blowVec, GREEN);
-            Debug.DrawRay(blowAnchor, blowVec, GREEN);
-            Debug.DrawRay(blowAnchor + mouseDir.Rotate(-90f) * radius, blowVec, GREEN);
+            DrawLine(myLine[0].GetComponent<LineRenderer>(), blowAnchor + mouseDir.Rotate(90f) * radius, blowVec + mouseDir.Rotate(90f) * radius, GREEN);
+            DrawLine(myLine[1].GetComponent<LineRenderer>(), blowAnchor, blowVec, GREEN);
+            DrawLine(myLine[2].GetComponent<LineRenderer>(), blowAnchor + mouseDir.Rotate(-90f) * radius, blowVec + mouseDir.Rotate(-90f) * radius, GREEN);
         }
     }
+
+
+
+    void DrawLine(LineRenderer lr, Vector3 start, Vector3 end, Color color)
+    {
+        // myLine.transform.position = start;
+        lr.material = new Material(Shader.Find("Sprites/Default"));
+        lr.startColor = color;
+        lr.endColor = color;
+        lr.startWidth = 0.1f;
+        lr.endWidth = 0.1f;
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+    }
+
+
 }
