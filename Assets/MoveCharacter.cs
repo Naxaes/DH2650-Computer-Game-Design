@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MoveCharacter : MonoBehaviour
 {
-    public Transform transform;
-
     // Update is called once per frame
     void Update()
     {

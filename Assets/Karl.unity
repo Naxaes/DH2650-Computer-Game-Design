@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTransform: {fileID: 1768353543}
-  horizontalOffset: 0
+  horizontalOffset: 5
 --- !u!1 &1768353542
 GameObject:
   m_ObjectHideFlags: 0

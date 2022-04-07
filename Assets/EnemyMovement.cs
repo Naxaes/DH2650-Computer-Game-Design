@@ -6,7 +6,6 @@ public class EnemyMovement : MonoBehaviour
 {
     /*
      * - Public Variables -
-     * transform: the Transform component of the enemy.
      * playerTransform: the Transform component of the player or other character that this enemy should chase.
      * shouldChase: set to true if the enemy should chase the player, false if it should move back and forth only.
      * roamingRange: the standard movement range of the enemy, i.e. the distance it should roam before changing direction.
@@ -15,7 +14,6 @@ public class EnemyMovement : MonoBehaviour
      * epsilon: a variable which could be modified to change smoothness of enemy position reset.
      * direction: the direction the enemy will start moving in. 1 makes it start going left, -1 makes it start going right.
      */
-    public Transform transform;
     public Transform playerTransform;
     public bool shouldChase = true;
     public float roamingRange = 7.0f;
