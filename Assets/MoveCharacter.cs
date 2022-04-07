@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MoveCharacter : MonoBehaviour
 {
-    public Transform transform;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +15,11 @@ public class MoveCharacter : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position = new Vector2(transform.position.x - 0.1f, transform.position.y);
+            transform.position = new Vector2(transform.position.x - 0.03f, transform.position.y);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position = new Vector2(transform.position.x + 0.1f, transform.position.y);
+            transform.position = new Vector2(transform.position.x + 0.03f, transform.position.y);
         }
         if (Input.GetKey(KeyCode.W))
         {
