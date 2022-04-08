@@ -19,6 +19,8 @@ public static class Vector2Extension
 
 public class Blower : MonoBehaviour
 {
+
+    public Transform arm;
     [SerializeField]
     public float force = 75f;
 
@@ -57,6 +59,22 @@ public class Blower : MonoBehaviour
         Vector2 mouseDir = vecToMouse.normalized;
         Vector2 blowAnchor = new Vector2(transform.position.x, transform.position.y) + mouseDir * 0.2f;
         Vector2 blowVec = blowAnchor + mouseDir * maxDistance;
+
+        //join the blower sprite
+        float angle = Vector2.Angle(mouseDir,Vector2.up);
+         if(transform.localScale.x<0){
+            if(vecToMouse.x>0)
+        arm.eulerAngles = new Vector3(0,0,-angle+90);
+        else
+        arm.eulerAngles = new Vector3(0,0,angle+90);
+        }
+        if(transform.localScale.x>0){
+        if(vecToMouse.x>0)
+        arm.eulerAngles = new Vector3(0,0,-angle-90);
+        else
+        arm.eulerAngles = new Vector3(0,0,angle-90);
+        }
+        
 
         if (Input.GetButton("Fire1"))
         {

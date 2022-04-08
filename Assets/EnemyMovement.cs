@@ -78,6 +78,10 @@ public class EnemyMovement : MonoBehaviour
             // Go roam
             isChasing = false;
         }
+
+        if(direction != 0 ){
+            transform.localScale = new Vector3(direction*(-1.2337f),1.2337f,1.2337f);
+        }
     }
 
     void FixedUpdate()
@@ -156,5 +160,15 @@ public class EnemyMovement : MonoBehaviour
     {
         direction *= -1;
         counter = 0.0f;
+    }
+
+     private void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "acid"){
+            Destroy(gameObject);
+        }
+        if(other.tag == "spike"){
+            Destroy(gameObject);
+        }
+
     }
 }

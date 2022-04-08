@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
 
     public CharacterController2D controller;
+    public Animator anime;
 
     public float runSpeed = 40f;
 
@@ -19,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        anime.SetFloat("isRunning",Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+        
 
         if(Input.GetButtonDown("Jump"))
         {
