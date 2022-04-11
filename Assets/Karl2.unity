@@ -1924,6 +1924,7 @@ MonoBehaviour:
     m_Bits: 64
   coll: {fileID: 987077210}
   anime: {fileID: 987077208}
+  projectileDamageDuration: 500
   heart: 10
   heartNumber: {fileID: 1938346856}
 --- !u!95 &987077208
