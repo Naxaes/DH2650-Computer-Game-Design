@@ -7,22 +7,32 @@ public class Player : MonoBehaviour
     public LayerMask ground;
     public Collider2D coll;
     public Animator anime;
+    public int projectileDamageDuration = 500;
 
     public int heart;
     public Text heartNumber;
 
     private Rigidbody2D rb;
+    private bool shouldDelay;
+    private int delayCounter;
 
     // Start is called before the first frame update
     void Start()
     {
-         rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        shouldDelay = false;
+        delayCounter = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (coll.IsTouchingLayers(ground))
+        delayCounter++;
+        if (delayCounter == projectileDamageDuration)
+        {
+            shouldDelay = false;
+        }
+        if (coll.IsTouchingLayers(ground) && !shouldDelay)
         {
             if (anime.GetBool("isHurt"))
                 anime.SetBool("isHurt", false);
@@ -49,6 +59,8 @@ public class Player : MonoBehaviour
         }
         if(other.tag == "projectile")
         {
+            shouldDelay = true;
+            delayCounter = 0;
             Destroy(other.gameObject);
             heart -= 1;
             heartNumber.text = heart.ToString();

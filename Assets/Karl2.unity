@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 987077203}
-  shouldChase: 0
+  shouldChase: 1
   roamingRange: 10
   visionRange: 5
   speed: 0.05
@@ -9686,7 +9686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 987077203}
-  shouldChase: 0
+  shouldChase: 1
   roamingRange: 10
   visionRange: 5
   speed: 0.05
