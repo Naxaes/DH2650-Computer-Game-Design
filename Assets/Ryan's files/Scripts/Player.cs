@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         }
         if (coll.IsTouchingLayers(ground) && !shouldDelay)
         {
+            delayCounter = 0;
             if (anime.GetBool("isHurt"))
                 anime.SetBool("isHurt", false);
         }
