@@ -29,28 +29,33 @@ public class Player : MonoBehaviour
         }
     }
 
- 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "collections"){
             Destroy(other.gameObject);
-            heart +=1;
+            heart += 1;
             heartNumber.text = heart.ToString();
         }
-
         if(other.tag == "acid"){
-            heart -=1;
+            heart -= 1;
             heartNumber.text = heart.ToString();
             anime.SetBool("isHurt",true);
             Invoke("jumpHurt",0.01f);
         }
         if(other.tag == "spike"){
-            heart -=1;
+            heart -= 1;
             heartNumber.text = heart.ToString();
             anime.SetBool("isHurt",true);
             Invoke("jumpHurt",0.01f);
         }
-
-
+        if(other.tag == "projectile")
+        {
+            Destroy(other.gameObject);
+            heart -= 1;
+            heartNumber.text = heart.ToString();
+            anime.SetBool("isHurt", true);
+            Invoke("jumpHurt", 0.01f);
+            Debug.Log("I've been shot!! ARGHH!");
+        }
     }
 
     void jumpHurt() {
