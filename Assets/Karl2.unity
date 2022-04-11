@@ -629,7 +629,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579079924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.9, y: 0.9, z: 30.685965}
+  m_LocalPosition: {x: -4.5, y: 5.7, z: 30.685965}
   m_LocalScale: {x: -1.2336999, y: 1.2336999, z: 1.2336999}
   m_Children: []
   m_Father: {fileID: 915488321}
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 987077203}
   shouldChase: 0
-  roamingRange: 4
+  roamingRange: 10
   visionRange: 5
   speed: 0.05
   epsilon: 0.005
@@ -1856,9 +1856,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arm: {fileID: 1211035337}
-  force: 60
+  force: 40
   radius: 1
-  maxDistance: 20
+  maxDistance: 10
   feet: {fileID: 987077210}
   ground:
     serializedVersion: 2
@@ -3387,7 +3387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1257424723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3448,7 +3448,7 @@ Transform:
   m_GameObject: {fileID: 1257424722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 46.8, y: -11.7, z: 0}
-  m_LocalScale: {x: 100, y: 1, z: 1}
+  m_LocalScale: {x: 130, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -9547,7 +9547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1639089718
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9687,7 +9687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 987077203}
   shouldChase: 0
-  roamingRange: 4
+  roamingRange: 10
   visionRange: 5
   speed: 0.05
   epsilon: 0.005
@@ -9798,7 +9798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650726776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.2, y: 7.7, z: 30.685965}
+  m_LocalPosition: {x: 16.3, y: 5.9, z: 30.685965}
   m_LocalScale: {x: -1.2337, y: 1.2337, z: 1.2337}
   m_Children: []
   m_Father: {fileID: 915488321}
@@ -10031,7 +10031,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1850391776
 SpriteRenderer:
   m_ObjectHideFlags: 0

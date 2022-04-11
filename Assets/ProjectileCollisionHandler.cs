@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileCollisionHandler : MonoBehaviour
-{
+{   
+    /*
+     * - Public Variables:
+     * ground: the ground layermask.
+     */
     public LayerMask ground;
 
     Collider2D coll;
+
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        // Get collider of this projectile
         coll = gameObject.GetComponent<Collider2D>();
     }
 
