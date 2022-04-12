@@ -7,6 +7,9 @@ TagManager:
   - spike
   - collections
   - acid
+  - player
+  - enemy
+  - projectile
   layers:
   - Default
   - TransparentFX
