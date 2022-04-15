@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Player : MonoBehaviour
     public LayerMask ground;
     public Collider2D coll;
     public Animator anime;
+    public GameObject gameOverPanel;
 
     public int heart;
     public Text heartNumber;
@@ -27,6 +29,12 @@ public class Player : MonoBehaviour
             if (anime.GetBool("isHurt"))
                 anime.SetBool("isHurt", false);
         }
+        if (heart <= 0){
+            Destroy(gameObject);
+            gameOverPanel.SetActive(true);
+        }
+
+       
     }
 
  
