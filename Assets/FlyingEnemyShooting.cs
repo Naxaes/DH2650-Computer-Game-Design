@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShooting : MonoBehaviour
+public class FlyingEnemyShooting : MonoBehaviour
 {
     /*
      * - Public Variables -
@@ -17,19 +17,19 @@ public class EnemyShooting : MonoBehaviour
     public Transform target;
     public GameObject enemy;
     public GameObject projectile;
-    public float horizontalPower = 12f;
-    public float verticalPower = 0.08f;
+    public float horizontalPower = 8f;
+    public float verticalPower = -0.2f;
     public float gravityScale = 0.1f;
     public int interval = 3;
 
     int direction;
-    EnemyMovement movement;
+    FlyingEnemyMovement movement;
     private float nextTime = 0.0f;
     Vector3 projectileMotion;
 
     void Start()
     {
-        movement = enemy.GetComponent<EnemyMovement>();
+        movement = enemy.GetComponent<FlyingEnemyMovement>();
     }
 
     void Update()

@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     public float roamingRange = 7.0f;
     public float visionRange = 3.0f;
     public float speed = 0.05f;
-    public float epsilon = 0.005f;
+    public float epsilon = 0.05f;
     public int direction = 1;
 
     float counter;
@@ -31,9 +31,13 @@ public class EnemyMovement : MonoBehaviour
     Vector3 startPosition;
     Vector3 startDirection;
 
-    // Start is called before the first frame update
+    /*
+     * Start. Called before first frame update.
+     * This function is simply used to set
+     * variables needed upon start.
+     */
     void Start()
-    {   
+    {
         // Remember starting direction
         directionMemory = direction;
         // Initialize starting position
@@ -46,7 +50,12 @@ public class EnemyMovement : MonoBehaviour
         counter = 0.0f;
     }
 
-    // Update is called once per frame
+    /*
+     * Update. Called once per frame.
+     * This function performs calculations and
+     * comparisons in order to set the appropriate
+     * boolean variables for this frame.
+     */
     void Update()
     {   
         // Calculate the direction from enemy to player
@@ -79,32 +88,56 @@ public class EnemyMovement : MonoBehaviour
             isChasing = false;
         }
 
-        if(direction != 0 ){
+        if(direction != 0){
             transform.localScale = new Vector3(direction*(-1.2337f),1.2337f,1.2337f);
         }
     }
 
+    /*
+     * FixedUpdate.
+     * Here we set the state of the enemy
+     * depending on boolean variables.
+     */
     void FixedUpdate()
     {
+        
         if (isChasing)
         {
             ChasePlayer(movement);
+            Debug.Log("Chasing");
         }
         else if (isMovingBack)
         {
             ResetPosition();
+            Debug.Log("Reseting");
         }
         else
         {
             Roam();
+            Debug.Log("Roaming");
         }
 
         Debug.DrawLine(startPosition, startPosition - directionMemory * new Vector3(roamingRange, 0, 0), new Color(1.0f, 1.0f, 0.0f));
         Debug.DrawLine(transform.position - new Vector3(visionRange * 0.5f, 0, 0), transform.position + new Vector3(visionRange * 0.5f, 0, 0), new Color(1.0f, 0.0f, 1.0f));
     }
 
+    /*
+     * Function to make the enemy
+     * roam back and forth according to the roaming range.
+     * This function also makes sure that the enemy
+     * starts reseting its position if it gets blown too far away
+     * whilst roaming.
+     */
     void Roam()
-    {
+    {   
+        if ((transform.position.x > startPosition.x + roamingRange) || (transform.position.x < startPosition.x - roamingRange))
+        {
+            // Move back to starting position
+            isChasing = false;
+            isMovingBack = true;
+            Flip();
+            return;
+        }
         // Check that we haven't roamed too far
         if (counter <= roamingRange)
         {
@@ -119,11 +152,24 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    /*
+     * Function to reset the position of the enemy,
+     * i.e. move it back to its starting position and 
+     * commence roaming.
+     */
     void ResetPosition()
     {   
         // Determine direction to starting position
         startDirection = startPosition - transform.position;
         startDirection.Normalize();
+        if(startDirection.x > 0)
+        {
+            direction = -1;
+        } 
+        else
+        {
+            direction = 1;
+        }
         // Move towards starting position
         transform.position = new Vector2(transform.position.x + (startDirection * speed).x, transform.position.y);
         // Stop moving towards starting position when we're close enough
@@ -134,9 +180,14 @@ public class EnemyMovement : MonoBehaviour
             isChasing = false;
             counter = 0.0f;
             direction = directionMemory;
+            Debug.Log("Home");
         }
     }
 
+    /*
+     * Function to move the enemy towards the 
+     * direction of the player when chasing.
+     */
     void ChasePlayer(Vector2 playerDirection)
     {   
         // Move towards the direction of the player
@@ -144,6 +195,10 @@ public class EnemyMovement : MonoBehaviour
         DirectionCheck();
     }
 
+    /*
+     * Function used to set the direction to right/left
+     * depending on where the player is when chasing.
+     */
     void DirectionCheck()
     {
         if (transform.position.x > playerTransform.position.x)
@@ -155,20 +210,32 @@ public class EnemyMovement : MonoBehaviour
             direction = -1;
         }
     }
-
+    
+    /*
+     * Function to flip the direction
+     * and reset the counter when roaming range
+     * has been reached.
+     */
     void Flip()
     {
         direction *= -1;
         counter = 0.0f;
     }
 
-     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "acid"){
+    /*
+     * Function to determine what should happen
+     * when this enemy collides with different
+     * colliders in the scene.
+     */
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "acid")
+        {
             Destroy(gameObject);
         }
-        if(other.tag == "spike"){
+        if (other.tag == "spike")
+        {
             Destroy(gameObject);
         }
-
     }
 }
