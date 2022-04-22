@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - spike
-  - collections
   - acid
   - player
   - enemy
   - projectile
+  - heart
   layers:
   - Default
   - TransparentFX
