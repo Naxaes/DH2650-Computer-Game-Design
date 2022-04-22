@@ -2,9 +2,14 @@
 using UnityEngine;
 
 using UnityEngine.Events;
+using System;
+using System.Collections;
+
+
 
 public class CharacterController2D : MonoBehaviour
 {
+	[Header("Movement")]
 	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
@@ -14,6 +19,16 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
 
+	[Header("Dashing")]
+	[SerializeField] private float dashSpeed = 14f;
+	[SerializeField] private float dashTime = 0.5f;
+	private Vector2 dashDir;
+	private bool isDashing;
+	private bool canDash = true;
+	private TrailRenderer trailRenderer;
+	private Animator animator;
+
+
 
 	
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -22,6 +37,7 @@ public class CharacterController2D : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+
 
 	[Header("Events")]
 	[Space]
@@ -38,6 +54,8 @@ public class CharacterController2D : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		trailRenderer = GetComponent<TrailRenderer>();
+		animator = GetComponent<Animator>();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -67,7 +85,7 @@ public class CharacterController2D : MonoBehaviour
 	}
 
 
-	public void Move(float move, bool crouch, bool jump)
+	public void Move(float move, bool crouch, bool jump, bool dashInput)
 	{
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
@@ -136,8 +154,45 @@ public class CharacterController2D : MonoBehaviour
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
+		
+		//Debug.Log(dashInput);
+		//canDash = true;
+		//dash direction
+		Vector2 vecToMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+		Vector2 dashDir = vecToMouse.normalized * (-1);
+		
+		if (dashInput && canDash)
+		{
+			Debug.Log("toyoyotoy");
+			isDashing = true;
+			canDash = false;
+			trailRenderer.emitting = true;
+
+			//Debug.Log(dashDir);
+			//dashDir = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+			StartCoroutine(StopDashing());
+		}
+
+		//animator.SetBool("IsDashing", isDashing);
+		Debug.Log(dashDir);
+		if(isDashing)
+		{
+			//Debug.Log(dashDir);
+			m_Rigidbody2D.velocity = dashDir * dashSpeed;
+			return;
+		}
+		if(m_Grounded)
+		{
+			canDash = true;
+		}
 	}
 
+	private IEnumerator StopDashing()
+	{
+		yield return new WaitForSeconds(dashTime);
+		trailRenderer.emitting = false;
+		isDashing = false;
+	}
 
 	private void Flip()
 	{

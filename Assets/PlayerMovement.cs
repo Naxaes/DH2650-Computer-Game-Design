@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool jump = false;
     bool crouch = false;
+    bool dashInput = false;
 
     // Update is called once per frame
     void Update()
@@ -37,13 +38,19 @@ public class PlayerMovement : MonoBehaviour
             crouch = false;
         }
 
+        if(Input.GetButtonDown("Fire2"))
+        {
+            dashInput = true;
+        }
+
 
 
     }
 
     void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump, dashInput);
         jump = false;
+        dashInput = false;
     }
 }
