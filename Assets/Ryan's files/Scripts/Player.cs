@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -38,6 +39,12 @@ public class Player : MonoBehaviour
             if (anime.GetBool("isHurt"))
                 anime.SetBool("isHurt", false);
         }
+        if (heart <= 0){
+            Destroy(gameObject);
+            gameOverPanel.SetActive(true);
+        }
+
+       
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
