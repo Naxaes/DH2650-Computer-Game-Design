@@ -165,8 +165,6 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  coll: {fileID: 2525406651557361497}
-  anime: {fileID: 2525406651557361502}
   gameOverPanel: {fileID: 0}
   projectileDamageDuration: 500
   heart: 10
@@ -213,8 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdbcf4549e67c714dacbb962eb658dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 2525406651557361477}
-  anime: {fileID: 2525406651557361502}
   runSpeed: 40
 --- !u!114 &2525406651557361478
 MonoBehaviour:
@@ -228,9 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbabd44ac06784841b806d8fba9fe136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blowAnimation: {fileID: 2525406652819097188}
-  arm: {fileID: 2525406652819097210}
-  force: 30
+  force: 25
   radius: 1
   maxDistance: 10
   feet: {fileID: 2525406651557361497}

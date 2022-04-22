@@ -41,14 +41,14 @@ public class ParticleSpawner : MonoBehaviour
             if (filled)
             {
                 Rigidbody2D rb = allParticles[nextToKill];
-                rb.position = transform.position + spawnOffsetX * (2.0f * Random.value - 1.0f) * Vector3.right;
+                rb.position = transform.position + spawnOffsetX * (2.0f * Random.value - 1.0f) * Vector3.right + spawnOffsetX * (2.0f * Random.value - 1.0f) * Vector3.up;
                 rb.velocity = Vector3.zero;
             }
             else
             {
                 Rigidbody2D rb = Instantiate(particle, transform).GetComponent<Rigidbody2D>();
                 allParticles[nextToKill] = rb;
-                rb.position = transform.position + spawnOffsetX * (2.0f * Random.value - 1.0f) * Vector3.right;
+                rb.position = transform.position + spawnOffsetX * (2.0f * Random.value - 1.0f) * Vector3.right + spawnOffsetX * (2.0f * Random.value - 1.0f) * Vector3.up;
                 rb.velocity = Vector3.zero;
             }
             nextToKill = (nextToKill + 1) & maxActiveMask;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileCollisionHandler : MonoBehaviour
@@ -37,17 +35,17 @@ public class ProjectileCollisionHandler : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Destroyed");
         }
-        if (other.tag == "acid")
+        if (other.CompareTag("acid"))
         {
             Destroy(gameObject);
             Debug.Log("Destroyed");
         }
-        if (other.tag == "spike")
+        if (other.CompareTag("spike"))
         {
             Destroy(gameObject);
             Debug.Log("Destroyed");
         }
-        if (other.tag == "enemy")
+        if (other.CompareTag("enemy"))
         {
             Destroy(gameObject);
             Destroy(other.gameObject);

@@ -68,35 +68,15 @@ public class Blower : MonoBehaviour
         Vector2 blowAnchor = new Vector2(transform.position.x, transform.position.y) + mouseDir * 0.2f;
         Vector2 blowVec = blowAnchor + mouseDir * maxDistance;
 
-        //join the blower sprite
-        float angle = Vector2.Angle(mouseDir,Vector2.up);
-        /*
-        if (angle > 0)
+        float angle = Vector2.SignedAngle(Vector2.right, mouseDir);
+        if (transform.lossyScale.x >= 0)
         {
-            arm.eulerAngles = new Vector3(0, 0, angle + 90);
+            arm.eulerAngles = new Vector3(0, 0, angle + 180);
         }
         else
         {
-            arm.eulerAngles = new Vector3(0, 0, -angle + 90);
-        }*/
-        
-        
-        if (transform.localScale.x < 0)
-        {
-            if(vecToMouse.x > 0)
-                arm.eulerAngles = new Vector3(0,0,-angle-90);
-            else
-                arm.eulerAngles = new Vector3(0,0,angle-90);
+            arm.eulerAngles = new Vector3(0, 0, angle);
         }
-
-        if(transform.localScale.x > 0)
-        {
-            if(vecToMouse.x > 0)
-                arm.eulerAngles = new Vector3(0,0,-angle+90);
-            else
-                arm.eulerAngles = new Vector3(0,0,angle+90);
-        } 
-        
 
         if (Input.GetButton("Fire1"))
         {
@@ -117,7 +97,8 @@ public class Blower : MonoBehaviour
 
                 var distance = Mathf.Clamp(Vector2.Distance(blowAnchor, new Vector2(collision.transform.position.x, collision.transform.position.y)), 1f, maxDistance);
                 var attenuation = distance; // * distance;
-                if (collision.transform.gameObject != this.gameObject)
+               
+                if (collisionBody.gameObject != feet.gameObject)  // Not our self
                     collisionBody.AddForce(mouseDir * force * (1 / attenuation));
                 else if (!feet.IsTouchingLayers(ground))
                     collisionBody.AddForce(-mouseDir * force);
