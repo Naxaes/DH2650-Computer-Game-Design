@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     public float roamingRange = 7.0f;
     public float visionRange = 3.0f;
     public float speed = 0.05f;
-    public float epsilon = 0.005f;
+    public float epsilon = 0.05f;
     public int direction = 1;
 
     float counter;
@@ -27,7 +27,6 @@ public class EnemyMovement : MonoBehaviour
     bool isChasing;
     bool isMovingBack;
     int directionMemory;
-    Rigidbody2D rb;
     Vector2 movement;
     Vector3 startPosition;
     Vector3 startDirection;
@@ -39,7 +38,6 @@ public class EnemyMovement : MonoBehaviour
      */
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
         // Remember starting direction
         directionMemory = direction;
         // Initialize starting position
@@ -132,7 +130,7 @@ public class EnemyMovement : MonoBehaviour
      */
     void Roam()
     {   
-        if ((transform.position.x > startPosition.x + roamingRange) || transform.position.x < startPosition.x - roamingRange)
+        if ((transform.position.x > startPosition.x + roamingRange) || (transform.position.x < startPosition.x - roamingRange))
         {
             // Move back to starting position
             isChasing = false;
