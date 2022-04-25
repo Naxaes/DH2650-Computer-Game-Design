@@ -44,13 +44,16 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: background
+  - name: Background
     uniqueID: 1558193475
     locked: 0
-  - name: back
+  - name: BackgroundTiles
     uniqueID: 1631099009
     locked: 0
-  - name: ground
+  - name: Fluid
+    uniqueID: 2621885837
+    locked: 0
+  - name: GroundTiles
     uniqueID: 2419563261
     locked: 0
   - name: Default
@@ -59,9 +62,9 @@ TagManager:
   - name: player
     uniqueID: 4018581295
     locked: 0
+  - name: ForegroundTiles
+    uniqueID: 2496857505
+    locked: 0
   - name: water
     uniqueID: 395624143
-    locked: 0
-  - name: front
-    uniqueID: 2496857505
     locked: 0
