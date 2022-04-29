@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public LayerMask ground;
     
     public GameObject gameOverPanel;
-    public int projectileDamageDuration = 500;
+    public int projectileDamageDuration = 50;
 
     public int heart;
     public Text heartNumber;
@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         anime = GetComponent<Animator>();

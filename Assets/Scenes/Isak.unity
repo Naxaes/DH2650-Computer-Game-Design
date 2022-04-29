@@ -374,7 +374,8 @@ PrefabInstance:
       propertyPath: heartNumber
       value: 
       objectReference: {fileID: 118352251}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2525406651557361478, guid: 578d27467170e8548b151c2d66100559, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 578d27467170e8548b151c2d66100559, type: 3}
 --- !u!1 &294121702
 GameObject:
@@ -42464,6 +42465,11 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!58 &1524888725 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2525406651557361497, guid: 578d27467170e8548b151c2d66100559, type: 3}
+  m_PrefabInstance: {fileID: 211982067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1538796745
 GameObject:
   m_ObjectHideFlags: 0
@@ -42582,6 +42588,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752811802}
   m_CullTransparentMesh: 1
+--- !u!1 &1819285424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2525406652819097209, guid: 578d27467170e8548b151c2d66100559, type: 3}
+  m_PrefabInstance: {fileID: 211982067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819285425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819285424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbabd44ac06784841b806d8fba9fe136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 25
+  radius: 1
+  maxDistance: 10
+  feet: {fileID: 1524888725}
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &1939029856
 PrefabInstance:
   m_ObjectHideFlags: 0
