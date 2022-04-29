@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2525406651557361503}
   - component: {fileID: 2525406651557361477}
   - component: {fileID: 2525406651557361476}
-  - component: {fileID: 2525406651557361478}
   - component: {fileID: -4758231317386941787}
   m_Layer: 3
   m_Name: JohnnyBlow
@@ -161,12 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa87fecfdee64c868c24107e3fd0667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 600
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
   gameOverPanel: {fileID: 0}
-  projectileDamageDuration: 500
+  HurtDuration: 200
   heart: 10
   heartNumber: {fileID: 0}
 --- !u!114 &2525406651557361477
@@ -181,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1351d3b252a8b46b4feb5a3975910e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 1000
+  m_JumpForce: 900
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -212,25 +207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 40
---- !u!114 &2525406651557361478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2525406651557361501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbabd44ac06784841b806d8fba9fe136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 25
-  radius: 1
-  maxDistance: 10
-  feet: {fileID: 2525406651557361497}
-  ground:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!96 &-4758231317386941787
 TrailRenderer:
   serializedVersion: 2
@@ -400,6 +376,7 @@ GameObject:
   - component: {fileID: 2525406652819097210}
   - component: {fileID: 2525406652819097211}
   - component: {fileID: 2525406652819097188}
+  - component: {fileID: 552810127380882640}
   m_Layer: 3
   m_Name: Blower
   m_TagString: Untagged
@@ -496,3 +473,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &552810127380882640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2525406652819097209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbabd44ac06784841b806d8fba9fe136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 20
+  radius: 1
+  maxDistance: 10
+  feet: {fileID: 2525406651557361497}
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
