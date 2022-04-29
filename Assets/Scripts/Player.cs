@@ -84,32 +84,6 @@ public class Player : MonoBehaviour
             Invoke("jumpHurt", 0.01f);
             Debug.Log("I've been shot!! ARGHH!");
         }
-    
-        if (other.tag == "acid")
-        {
-          heart -= 1;
-          heartNumber.text = heart.ToString();
-          anime.SetBool("isHurt", true);
-          Invoke("jumpHurt", 0.01f);
-        }
-        if (other.tag == "spike")
-        {
-            heart -= 1;
-            heartNumber.text = heart.ToString();
-            anime.SetBool("isHurt", true);
-            Invoke("jumpHurt", 0.01f);
-        }
-        if (other.tag == "projectile")
-        {
-            shouldDelay = true;
-            delayCounter = 0;
-            Destroy(other.gameObject);
-            heart -= 1;
-            heartNumber.text = heart.ToString();
-            anime.SetBool("isHurt", true);
-            Invoke("jumpHurt", 0.01f);
-            Debug.Log("I've been shot!! ARGHH!");
-        }
     }
 
     void jumpHurt()

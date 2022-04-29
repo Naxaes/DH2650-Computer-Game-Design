@@ -19,14 +19,15 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
 
+	/*
 	[Header("Dashing")]
 	[SerializeField] private float dashSpeed = 14f;
 	[SerializeField] private float dashTime = 0.5f;
 	private Vector2 dashDir;
 	private bool isDashing;
-	private bool canDash = true;
-	private TrailRenderer trailRenderer;
-	private Animator animator;
+	private bool canDash = true; */
+	//private TrailRenderer trailRenderer;
+	//private Animator animator;
 
 
 
@@ -38,24 +39,23 @@ public class CharacterController2D : MonoBehaviour
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
+	//[Header("Events")]
+	//[Space]
 
-	[Header("Events")]
-	[Space]
 
-
-	public UnityEvent OnLandEvent;
+	private UnityEvent OnLandEvent;
 
 	[System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
 
-	public BoolEvent OnCrouchEvent;
+	private BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
 
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
-		trailRenderer = GetComponent<TrailRenderer>();
-		animator = GetComponent<Animator>();
+		//trailRenderer = GetComponent<TrailRenderer>();
+		//animator = GetComponent<Animator>();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -155,6 +155,7 @@ public class CharacterController2D : MonoBehaviour
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
 		
+		/*
 		//Debug.Log(dashInput);
 		//canDash = true;
 		//dash direction
@@ -184,15 +185,16 @@ public class CharacterController2D : MonoBehaviour
 		if(m_Grounded)
 		{
 			canDash = true;
-		}
+		}*/
 	}
 
+	/*
 	private IEnumerator StopDashing()
 	{
 		yield return new WaitForSeconds(dashTime);
 		trailRenderer.emitting = false;
 		isDashing = false;
-	}
+	}*/
 
 	private void Flip()
 	{
