@@ -7,7 +7,9 @@ public class ProjectileCollisionHandler : MonoBehaviour
      * ground: the ground layermask.
      */
     public LayerMask ground;
-
+    public AudioSource audioSource;
+    public AudioClip projectileCollisionSound;
+    public float volume = 0.1f;
     Collider2D coll;
 
     // Start is called before the first frame update
@@ -49,6 +51,7 @@ public class ProjectileCollisionHandler : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
+            audioSource.PlayOneShot(projectileCollisionSound, volume);
             Debug.Log("Enemy Defeated");
         }
     }

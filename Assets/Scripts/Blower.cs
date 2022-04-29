@@ -35,6 +35,9 @@ public class Blower : MonoBehaviour
     [SerializeField]
     public LayerMask ground;
 
+    public AudioSource audioSource;
+    public float volume = 0.1f;
+
     private GameObject[] myLine;
     private Animator blowAnimation;
     private Transform arm;
@@ -46,6 +49,7 @@ public class Blower : MonoBehaviour
     {
         blowAnimation = GetComponent<Animator>();
         arm = GetComponent<Transform>();
+        audioSource.Stop();
 
         myLine = new GameObject[3];
         myLine[0] = new GameObject();
@@ -80,6 +84,10 @@ public class Blower : MonoBehaviour
 
         if (Input.GetButton("Fire1"))
         {
+            if (!audioSource.isPlaying)
+            {
+                StartCoroutine(AudioHelper.FadeIn(audioSource, 1.5f, volume));
+            }
             blowAnimation.SetBool("isBlowing", true);
             DrawLine(myLine[0].GetComponent<LineRenderer>(), blowAnchor + mouseDir.Rotate(90f) * radius, blowVec + mouseDir.Rotate(90f) * radius, RED);
             DrawLine(myLine[1].GetComponent<LineRenderer>(), blowAnchor, blowVec, RED);
@@ -106,6 +114,7 @@ public class Blower : MonoBehaviour
         }
         else
         {
+            StartCoroutine(AudioHelper.FadeOut(audioSource, 2, 0));
             blowAnimation.SetBool("isBlowing", false);
             DrawLine(myLine[0].GetComponent<LineRenderer>(), blowAnchor + mouseDir.Rotate(90f) * radius, blowVec + mouseDir.Rotate(90f) * radius, GREEN);
             DrawLine(myLine[1].GetComponent<LineRenderer>(), blowAnchor, blowVec, GREEN);
