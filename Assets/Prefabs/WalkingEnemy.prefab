@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8003951472807773990}
   m_Layer: 0
   m_Name: WalkingEnemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.35
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -168,7 +168,7 @@ MonoBehaviour:
   target: {fileID: 2525406651557361499, guid: 578d27467170e8548b151c2d66100559, type: 3}
   enemy: {fileID: 8003951472807773985}
   projectile: {fileID: 3049806154762046123, guid: 1afa7b10b4efc4b69968211c1f5ee18f, type: 3}
-  horizontalPower: 12
+  horizontalPower: 2
   verticalPower: 0.08
   gravityScale: 0.1
   interval: 3

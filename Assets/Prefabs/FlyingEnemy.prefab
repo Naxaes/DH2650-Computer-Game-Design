@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.7
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -170,7 +170,7 @@ MonoBehaviour:
   speed: 0.05
   epsilon: 0.1
   direction: 1
-  airResistance: 0.006
+  airResistance: 0.01
   frequency: 2
   amplitude: 0.05
 --- !u!114 &3635736792843322922
@@ -188,7 +188,7 @@ MonoBehaviour:
   target: {fileID: 2525406651557361499, guid: 578d27467170e8548b151c2d66100559, type: 3}
   enemy: {fileID: 3635736792843322921}
   projectile: {fileID: 3049806154762046123, guid: 1afa7b10b4efc4b69968211c1f5ee18f, type: 3}
-  horizontalPower: 8
+  horizontalPower: 1.5
   verticalPower: -0.2
   gravityScale: 0.1
   interval: 3

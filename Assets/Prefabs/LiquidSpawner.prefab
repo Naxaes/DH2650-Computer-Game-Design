@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 7745001068086872381, guid: b920cc1db9c6a4deaa2bb2aa728e2939, type: 3}
-  maxActivePowerOfTwo: 8
-  spawnsPerSecond: 64
-  spawnOffsetX: 2
+  maxActivePowerOfTwo: 10
+  spawnsPerSecond: 192
+  spawnOffsetX: 0.7
 --- !u!1 &8784623429892445076
 GameObject:
   m_ObjectHideFlags: 0
