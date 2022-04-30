@@ -2044,6 +2044,14 @@ PrefabInstance:
       propertyPath: horizontalPower
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8458699740851941208, guid: b8a3fad2d5d393845957b77cf8d2dc8c, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 809839982a2bb5842b8ccfc917f83c6b, type: 3}
+    - target: {fileID: 8458699740851941208, guid: b8a3fad2d5d393845957b77cf8d2dc8c, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1819490756}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a3fad2d5d393845957b77cf8d2dc8c, type: 3}
 --- !u!1001 &1254886585
@@ -4265,6 +4273,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6205627819652216455, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 809839982a2bb5842b8ccfc917f83c6b, type: 3}
+    - target: {fileID: 6205627819652216455, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1819490756}
     - target: {fileID: 8003951472807773984, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
       propertyPath: clip
       value: 
@@ -4297,6 +4313,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkingEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8003951472807773987, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003951472807773987, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: eb73cda98e0eca3478e1a7afd455369a, type: 3}
+    - target: {fileID: 8003951472807773987, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1819490756}
+    - target: {fileID: 8003951472807773987, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: projectileCollisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ff6d19bae6c4a043b6bfb51d0917be2, type: 3}
     - target: {fileID: 8003951472807773989, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
       propertyPath: m_Mass
       value: 0.35
@@ -4516,6 +4548,10 @@ PrefabInstance:
     - target: {fileID: 1170912094569259826, guid: 232f7a52af60b7f4cae23094ce88379c, type: 3}
       propertyPath: m_audioClip
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170912094569259826, guid: 232f7a52af60b7f4cae23094ce88379c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1170912094569259827, guid: 232f7a52af60b7f4cae23094ce88379c, type: 3}
       propertyPath: m_RootOrder
