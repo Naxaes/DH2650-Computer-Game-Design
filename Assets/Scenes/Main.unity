@@ -32099,6 +32099,8 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 0
+  audioSource: {fileID: 0}
+  volume: 0.1
 --- !u!1001 &1774442357
 PrefabInstance:
   m_ObjectHideFlags: 0
