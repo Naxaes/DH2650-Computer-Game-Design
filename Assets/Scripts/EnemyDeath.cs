@@ -10,6 +10,10 @@ public class EnemyDeath : MonoBehaviour
 
     private void OnDestroy()
     {
-        audioSource.PlayOneShot(deathSound, volume);
+        Debug.Log(deathSound);
+        if (this != null && audioSource != null && deathSound != null)
+        {
+            audioSource.PlayOneShot(deathSound, volume);
+        }
     }
 }
