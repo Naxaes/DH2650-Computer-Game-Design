@@ -7,7 +7,6 @@ public class ProjectileCollisionHandler : MonoBehaviour
      * ground: the ground layermask.
      */
     public LayerMask ground;
-
     Collider2D coll;
 
     // Start is called before the first frame update
