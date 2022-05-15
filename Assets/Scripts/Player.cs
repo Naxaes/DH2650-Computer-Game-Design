@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     private bool shouldDelay;
     private int delayCounter;
 
+    public AudioSource audioSource;
+    public AudioClip projectileCollisionSound;
+    public float volume = 0.1f;
 
 
     // Start is called before the first frame update
@@ -94,6 +97,7 @@ public class Player : MonoBehaviour
             heart -= 1;
             heartNumber.text = heart.ToString();
             anime.SetBool("isHurt", true);
+            audioSource.PlayOneShot(projectileCollisionSound, volume);
             Debug.Log("I've been shot!! ARGHH!");
         }
     }

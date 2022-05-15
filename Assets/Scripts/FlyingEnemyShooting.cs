@@ -22,6 +22,9 @@ public class FlyingEnemyShooting : MonoBehaviour
     public float gravityScale = 0.1f;
     public int interval = 3;
 
+    public AudioSource audioSource;
+    public float volume = 0.1f;
+
     int direction;
     FlyingEnemyMovement movement;
     private float nextTime = 0.0f;
@@ -30,6 +33,7 @@ public class FlyingEnemyShooting : MonoBehaviour
     void Start()
     {
         movement = enemy.GetComponent<FlyingEnemyMovement>();
+        audioSource.Stop();
     }
 
     void Update()
@@ -58,6 +62,17 @@ public class FlyingEnemyShooting : MonoBehaviour
             projectileRB.constraints = RigidbodyConstraints2D.FreezeRotation;
             projectileMotion = new Vector3(target.right.x, target.right.y - direction * verticalPower, target.right.z);
             projectileRB.AddForce(projectileMotion * horizontalPower * -direction, ForceMode2D.Impulse);
+
+            PlayProjectileSound();
+        }
+    }
+
+    void PlayProjectileSound()
+    {
+        if (GetComponent<Renderer>().isVisible)
+        {
+            StartCoroutine(AudioHelper.FadeIn(audioSource, 0, volume));
+            StartCoroutine(AudioHelper.FadeOut(audioSource, 0.35f, 0));
         }
     }
 }
