@@ -237,7 +237,7 @@ public class EnemyMovement : MonoBehaviour
      * colliders in the scene.
      */
     private void OnTriggerEnter2D(Collider2D other)
-    {
+    {   
         if (other.tag == "acid")
         {
             anime.SetTrigger("isDead");
@@ -255,6 +255,14 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("acid"))
+        {
+            anime.SetTrigger("isDead");
+            isAlive = false;
+        }
+    }
 
     private void Death(){
         Destroy(gameObject);
