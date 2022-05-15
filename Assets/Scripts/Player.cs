@@ -111,8 +111,12 @@ public class Player : MonoBehaviour
     }
 
     private void Death(){
-        Destroy(gameObject);
+        //Destroy(gameObject);
         gameOverPanel.SetActive(true);
+        GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<CharacterController2D>().enabled = false;
+        GetComponentInChildren<Blower>().enabled = false;
+        GetComponent<Animator>().enabled = false;
     }
 }
 
