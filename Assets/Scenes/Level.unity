@@ -4425,6 +4425,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8003951472807773984, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003951472807773984, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1834248162}
@@ -4449,6 +4453,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8003951472807773987, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003951472807773987, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: eb73cda98e0eca3478e1a7afd455369a, type: 3}
@@ -4463,6 +4471,10 @@ PrefabInstance:
     - target: {fileID: 8003951472807773989, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
       propertyPath: m_Mass
       value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003951472807773989, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8003951472807773991, guid: c4b2e5d21c2b39546bf4b98e2868d041, type: 3}
       propertyPath: m_RootOrder

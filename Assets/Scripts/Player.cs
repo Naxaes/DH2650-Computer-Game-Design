@@ -64,6 +64,14 @@ public class Player : MonoBehaviour
             //heartNumber.text = heart.ToString();
             anime.SetBool("isHurt", true);
         }
+
+        if (!shouldDelay && collision.gameObject.CompareTag("spike"))
+        {
+            shouldDelay = true;
+            heart -= 1;
+            //heartNumber.text = heart.ToString();
+            anime.SetBool("isHurt", true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

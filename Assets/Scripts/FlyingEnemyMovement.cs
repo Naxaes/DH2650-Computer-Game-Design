@@ -262,6 +262,16 @@ public class FlyingEnemyMovement : MonoBehaviour
     }
 
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("acid"))
+        {
+            anime.SetTrigger("isDead");
+            isAlive = false;
+        }
+    }
+
+
     private void Death(){
         Destroy(gameObject);
     }
