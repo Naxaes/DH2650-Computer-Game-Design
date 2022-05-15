@@ -28,6 +28,9 @@ public class FlyingEnemyMovement : MonoBehaviour
     public float frequency = 2f;
     public float amplitude = 0.05f;
 
+
+    private Animator anime;
+
     float counter;
     float distance;
     bool isMovingBack;
@@ -37,6 +40,7 @@ public class FlyingEnemyMovement : MonoBehaviour
     Rigidbody2D rb;
     float xComponent;
     float yComponent;
+    bool isAlive;
 
     /*
      * Start. Called before first frame update.
@@ -55,6 +59,9 @@ public class FlyingEnemyMovement : MonoBehaviour
         isMovingBack = false;
         // Reset counter
         counter = 0.0f;
+
+        isAlive = true;
+        anime = GetComponent<Animator>();
     }
 
     /*
@@ -90,12 +97,13 @@ public class FlyingEnemyMovement : MonoBehaviour
                 yComponent += airResistance;
             }
         }
+        if(isAlive){
         rb.velocity = new Vector2(xComponent, yComponent);
-        
+        }
         
         if (direction != 0)
         {
-            transform.localScale = new Vector3(direction * (-1.2337f), 1.2337f, 1.2337f);
+            transform.localScale = new Vector3(direction * (1.2337f), 1.2337f, 1.2337f);
         }
     }
 
@@ -105,7 +113,7 @@ public class FlyingEnemyMovement : MonoBehaviour
    * depending on boolean variables.
    */
     void FixedUpdate()
-    {
+    {   if(isAlive){
         if (isMovingBack)
         {
             ResetPosition();
@@ -116,6 +124,7 @@ public class FlyingEnemyMovement : MonoBehaviour
             Roam();
             Debug.Log("Roaming");
         }
+    }
 
         Debug.DrawLine(startPosition, startPosition - directionMemory * new Vector3(roamingRange, 0, 0), new Color(1.0f, 1.0f, 0.0f));
     }
@@ -237,11 +246,23 @@ public class FlyingEnemyMovement : MonoBehaviour
     {
         if (other.tag == "acid")
         {
-            Destroy(gameObject);
+            anime.SetTrigger("isDead");
+            isAlive = false;
         }
         if (other.tag == "spike")
         {
-            Destroy(gameObject);
+            anime.SetTrigger("isDead");
+            isAlive = false;
         }
+        if (other.tag == "projectile")
+        {
+            anime.SetTrigger("isDead");
+            isAlive = false;
+        }
+    }
+
+
+    private void Death(){
+        Destroy(gameObject);
     }
 }

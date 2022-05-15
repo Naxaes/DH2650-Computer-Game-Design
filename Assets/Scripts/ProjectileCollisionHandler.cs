@@ -7,6 +7,8 @@ public class ProjectileCollisionHandler : MonoBehaviour
      * ground: the ground layermask.
      */
     public LayerMask ground;
+    private Animator anime;
+
     Collider2D coll;
 
     // Start is called before the first frame update
@@ -14,6 +16,8 @@ public class ProjectileCollisionHandler : MonoBehaviour
     {   
         // Get collider of this projectile
         coll = gameObject.GetComponent<Collider2D>();
+        anime = gameObject.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -31,24 +35,32 @@ public class ProjectileCollisionHandler : MonoBehaviour
     {
         if (coll.IsTouchingLayers(ground))
         {
-            Destroy(gameObject);
+            anime.SetTrigger("isBurst");
+            coll.isTrigger = false;
             Debug.Log("Destroyed");
         }
         if (other.CompareTag("acid"))
         {
-            Destroy(gameObject);
+            anime.SetTrigger("isBurst");
+             coll.isTrigger = false;
             Debug.Log("Destroyed");
         }
         if (other.CompareTag("spike"))
         {
-            Destroy(gameObject);
+            anime.SetTrigger("isBurst");
+            coll.isTrigger = false;
             Debug.Log("Destroyed");
         }
         if (other.CompareTag("enemy"))
         {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
+            
+            anime.SetTrigger("isBurst");
+            coll.isTrigger = false;
             Debug.Log("Enemy Defeated");
         }
+    }
+
+    private void Burst(){
+        Destroy(gameObject);
     }
 }

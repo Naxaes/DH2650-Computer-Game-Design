@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
 
     public int heart;
     public Text heartNumber;
+    public Image totalHealthBar;
+    public Image currentHealthBar;
+
 
     private Animator anime;
     private bool shouldDelay;
@@ -18,12 +21,15 @@ public class Player : MonoBehaviour
     public AudioClip projectileCollisionSound;
     public float volume = 0.1f;
 
+
     // Start is called before the first frame update
     void Start()
     {
         anime = GetComponent<Animator>();
         shouldDelay = false;
         delayCounter = 0;
+
+        totalHealthBar.fillAmount = 1;
     }
 
     // Update is called once per frame
@@ -40,10 +46,12 @@ public class Player : MonoBehaviour
         }
 
         if (heart <= 0)
-        {
-            Destroy(gameObject);
-            gameOverPanel.SetActive(true);
+        {   
+            anime.SetTrigger("isDead");
+            
         }
+
+        currentHealthBar.fillAmount = heart/ 10f;
 
     }
 
@@ -63,6 +71,7 @@ public class Player : MonoBehaviour
         if (other.CompareTag("heart"))
         {
             Destroy(other.gameObject);
+            if(heart<=10)
             heart += 1;
             heartNumber.text = heart.ToString();
         }
@@ -91,6 +100,11 @@ public class Player : MonoBehaviour
             audioSource.PlayOneShot(projectileCollisionSound, volume);
             Debug.Log("I've been shot!! ARGHH!");
         }
+    }
+
+    private void Death(){
+        Destroy(gameObject);
+        gameOverPanel.SetActive(true);
     }
 }
 
