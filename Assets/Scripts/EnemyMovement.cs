@@ -22,11 +22,14 @@ public class EnemyMovement : MonoBehaviour
     public float epsilon = 0.05f;
     public int direction = 1;
 
+    private Animator anime;
+    
     float counter;
     float distance;
     bool isChasing;
     bool isMovingBack;
     int directionMemory;
+    bool isAlive;
     Vector2 movement;
     Vector3 startPosition;
     Vector3 startDirection;
@@ -48,6 +51,10 @@ public class EnemyMovement : MonoBehaviour
         isMovingBack = false;
         // Reset counter
         counter = 0.0f;
+
+        isAlive = true;
+        anime = GetComponent<Animator>();
+        
     }
 
     /*
@@ -101,6 +108,7 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         
+        if(isAlive){
         if (isChasing)
         {
             ChasePlayer(movement);
@@ -115,6 +123,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Roam();
             Debug.Log("Roaming");
+        }
         }
 
         Debug.DrawLine(startPosition, startPosition - directionMemory * new Vector3(roamingRange, 0, 0), new Color(1.0f, 1.0f, 0.0f));
@@ -231,11 +240,23 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.tag == "acid")
         {
-            Destroy(gameObject);
+            anime.SetTrigger("isDead");
+            isAlive = false;
         }
         if (other.tag == "spike")
         {
-            Destroy(gameObject);
+            anime.SetTrigger("isDead");
+            isAlive = false;
         }
+        if (other.tag == "projectile")
+        {
+            anime.SetTrigger("isDead");
+            isAlive = false;
+        }
+    }
+
+
+    private void Death(){
+        Destroy(gameObject);
     }
 }
