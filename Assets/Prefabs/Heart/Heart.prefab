@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8438540978646453759}
   - component: {fileID: 8438540978646453756}
   - component: {fileID: 8438540978646453757}
-  - component: {fileID: 8438540978646453746}
+  - component: {fileID: 1812082003484145135}
   m_Layer: 0
   m_Name: Heart
   m_TagString: heart
@@ -100,7 +100,7 @@ CircleCollider2D:
   m_Offset: {x: 0.0000014143329, y: 0}
   serializedVersion: 2
   m_Radius: 0.64984214
---- !u!95 &8438540978646453746
+--- !u!95 &1812082003484145135
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
