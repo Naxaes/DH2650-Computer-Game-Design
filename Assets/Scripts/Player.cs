@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         {
             shouldDelay = true;
             heart -= 1;
-            heartNumber.text = heart.ToString();
+            //heartNumber.text = heart.ToString();
             anime.SetBool("isHurt", true);
         }
     }
@@ -73,20 +73,20 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             if(heart<=10)
             heart += 1;
-            heartNumber.text = heart.ToString();
+            //heartNumber.text = heart.ToString();
         }
         else if (other.CompareTag("acid"))
         {
             shouldDelay = true;
             heart -= 1;
-            heartNumber.text = heart.ToString();
+            //heartNumber.text = heart.ToString();
             anime.SetBool("isHurt", true);
         }
         else if (other.CompareTag("spike"))
         {
             shouldDelay = true;
             heart -= 1;
-            heartNumber.text = heart.ToString();
+            //heartNumber.text = heart.ToString();
             anime.SetBool("isHurt", true);
         }
         else if (other.CompareTag("projectile"))
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
             delayCounter = 0;
             Destroy(other.gameObject);
             heart -= 1;
-            heartNumber.text = heart.ToString();
+            //heartNumber.text = heart.ToString();
             anime.SetBool("isHurt", true);
             audioSource.PlayOneShot(projectileCollisionSound, volume);
             Debug.Log("I've been shot!! ARGHH!");
