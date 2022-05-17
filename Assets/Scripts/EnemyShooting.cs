@@ -16,7 +16,7 @@ public class EnemyShooting : MonoBehaviour
     public GameObject target;
     public GameObject projectile;
     public float horizontalPower = 12f;
-    public float verticalPower = 0.08f;
+    public float verticalPower = 0.0f;
     public float gravityScale = 0.1f;
     public int interval = 3;
 
@@ -52,7 +52,7 @@ public class EnemyShooting : MonoBehaviour
             {
                 rotation *= Quaternion.Euler(0, 180f, 0);
             }
-            GameObject newProjectile = Instantiate(projectile, transform.position - direction * targetTransform.right, rotation) as GameObject;
+            GameObject newProjectile = Instantiate(projectile, transform.position - direction * 1.01f * targetTransform.right, rotation) as GameObject;
             if (!newProjectile.GetComponent<Rigidbody2D>())
             {
                 newProjectile.AddComponent<Rigidbody2D>();

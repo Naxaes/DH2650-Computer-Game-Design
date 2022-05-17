@@ -109,21 +109,21 @@ public class EnemyMovement : MonoBehaviour
     {
         
         if(isAlive){
-        if (isChasing)
-        {
-            ChasePlayer(movement);
-            Debug.Log("Chasing");
-        }
-        else if (isMovingBack)
-        {
-            ResetPosition();
-            Debug.Log("Reseting");
-        }
-        else
-        {
-            Roam();
-            Debug.Log("Roaming");
-        }
+            if (isChasing)
+            {
+                ChasePlayer(movement);
+                Debug.Log("Chasing");
+            }
+            else if (isMovingBack)
+            {
+                ResetPosition();
+                Debug.Log("Reseting");
+            }
+            else
+            {
+                Roam();
+                Debug.Log("Roaming");
+            }
         }
 
         Debug.DrawLine(startPosition, startPosition - directionMemory * new Vector3(roamingRange, 0, 0), new Color(1.0f, 1.0f, 0.0f));
@@ -238,16 +238,6 @@ public class EnemyMovement : MonoBehaviour
      */
     private void OnTriggerEnter2D(Collider2D other)
     {   
-        if (other.tag == "acid")
-        {
-            anime.SetTrigger("isDead");
-            isAlive = false;
-        }
-        if (other.tag == "spike")
-        {
-            anime.SetTrigger("isDead");
-            isAlive = false;
-        }
         if (other.tag == "projectile")
         {
             anime.SetTrigger("isDead");
@@ -258,6 +248,11 @@ public class EnemyMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("acid"))
+        {
+            anime.SetTrigger("isDead");
+            isAlive = false;
+        }
+        if (collision.gameObject.CompareTag("spike"))
         {
             anime.SetTrigger("isDead");
             isAlive = false;
