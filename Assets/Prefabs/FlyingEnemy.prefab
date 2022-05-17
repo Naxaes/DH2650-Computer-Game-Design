@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3635736792843322913}
   - component: {fileID: 3635736792843322922}
   - component: {fileID: 8458699740851941208}
+  - component: {fileID: -8859694244720732535}
   m_Layer: 0
   m_Name: FlyingEnemy
   m_TagString: enemy
@@ -186,14 +187,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3cfcc836b8644499ad863ea0260898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2525406651557361499, guid: 578d27467170e8548b151c2d66100559, type: 3}
-  enemy: {fileID: 3635736792843322921}
+  target: {fileID: 2525406651557361501, guid: 578d27467170e8548b151c2d66100559, type: 3}
   projectile: {fileID: 3049806154762046123, guid: 1afa7b10b4efc4b69968211c1f5ee18f, type: 3}
   horizontalPower: 1.5
   verticalPower: -0.2
   gravityScale: 0.1
   interval: 3
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 3436011261046548321, guid: d2c886295962b4f4ea547292539c9d8c, type: 3}
   volume: 0.1
 --- !u!114 &8458699740851941208
 MonoBehaviour:
@@ -209,4 +209,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1170912094569259826, guid: 232f7a52af60b7f4cae23094ce88379c, type: 3}
   deathSound: {fileID: 8300000, guid: 809839982a2bb5842b8ccfc917f83c6b, type: 3}
+  volume: 0.1
+--- !u!114 &-8859694244720732535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635736792843322921}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c247a02333c91443a5e77fd56407967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 2525406651557361501, guid: 578d27467170e8548b151c2d66100559, type: 3}
+  projectile: {fileID: 3049806154762046123, guid: 1afa7b10b4efc4b69968211c1f5ee18f, type: 3}
+  gravityScale: 0.1
+  power: 2
+  interval: 3
+  audioSource: {fileID: 3436011261046548321, guid: d2c886295962b4f4ea547292539c9d8c, type: 3}
   volume: 0.1

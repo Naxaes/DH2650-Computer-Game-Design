@@ -166,14 +166,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e7100da8303ed46bd4e7b37984c942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  enemy: {fileID: 8003951472807773985}
+  target: {fileID: 2525406651557361501, guid: 578d27467170e8548b151c2d66100559, type: 3}
   projectile: {fileID: 3049806154762046123, guid: 1afa7b10b4efc4b69968211c1f5ee18f, type: 3}
   horizontalPower: 2
   verticalPower: 0.08
   gravityScale: 0.1
   interval: 3
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 3436011261046548321, guid: d2c886295962b4f4ea547292539c9d8c, type: 3}
   volume: 0.1
 --- !u!95 &8003951472807773990
 Animator:
