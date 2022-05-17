@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 481478996074259016, guid: 811c21bd1bd3445488481db1a11281aa, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.23113208, g: 0.9245283, b: 0.69986767, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,9 +133,6 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  audioSource: {fileID: 1170912094569259826, guid: 232f7a52af60b7f4cae23094ce88379c, type: 3}
-  projectileCollisionSound: {fileID: 8300000, guid: 7ff6d19bae6c4a043b6bfb51d0917be2, type: 3}
-  volume: 0.1
 --- !u!58 &-8625044440246421603
 CircleCollider2D:
   m_ObjectHideFlags: 0

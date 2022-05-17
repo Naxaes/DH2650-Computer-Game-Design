@@ -115,6 +115,16 @@ public class Player : MonoBehaviour
         GetComponent<CharacterController2D>().enabled = false;
         GetComponentInChildren<Blower>().enabled = false;
         GetComponent<Animator>().enabled = false;
+        Mute();
+    }
+
+    private void Mute()
+    {
+        AudioSource[] sources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        for (int i = 0; i < sources.Length; i++)
+        {
+            sources[i].mute = true;
+        }
     }
 }
 
