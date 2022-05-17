@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private Animator anime;
     private bool shouldDelay;
     private int delayCounter;
+    private AudioClip ouchSound;
 
     public AudioSource audioSource;
     public AudioClip projectileCollisionSound;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         anime = GetComponent<Animator>();
+        ouchSound = GetComponent<AudioSource>().clip;
         shouldDelay = false;
         delayCounter = 0;
 
@@ -62,6 +64,7 @@ public class Player : MonoBehaviour
             shouldDelay = true;
             heart -= 1;
             anime.SetBool("isHurt", true);
+            audioSource.PlayOneShot(ouchSound, volume);
         }
 
         if (!shouldDelay && collision.gameObject.CompareTag("spike"))
@@ -69,6 +72,7 @@ public class Player : MonoBehaviour
             shouldDelay = true;
             heart -= 1;
             anime.SetBool("isHurt", true);
+            audioSource.PlayOneShot(ouchSound, volume);
         }
 
         if (!shouldDelay && collision.gameObject.CompareTag("enemy"))
@@ -76,6 +80,7 @@ public class Player : MonoBehaviour
             shouldDelay = true;
             heart -= 1;
             anime.SetBool("isHurt", true);
+            audioSource.PlayOneShot(ouchSound, volume);
         }
     }
 
@@ -86,6 +91,7 @@ public class Player : MonoBehaviour
             if (heart < 10)
             {
                 heart += 1;
+                audioSource.PlayOneShot(audioSource.clip, volume);
                 Destroy(other.gameObject);
             }
             
@@ -99,6 +105,7 @@ public class Player : MonoBehaviour
             anime.SetBool("isHurt", true);
             audioSource.PlayOneShot(projectileCollisionSound, volume);
             Debug.Log("I've been shot!! ARGHH!");
+            GetComponent<AudioSource>().Play();
         }
     }
 
