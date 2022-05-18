@@ -51,6 +51,9 @@ TagManager:
   - name: BackgroundTiles
     uniqueID: 1631099009
     locked: 0
+  - name: BackgroundAssets
+    uniqueID: 2299949327
+    locked: 0
   - name: Fluid
     uniqueID: 2621885837
     locked: 0
