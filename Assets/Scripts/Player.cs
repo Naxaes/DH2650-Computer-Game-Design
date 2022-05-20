@@ -96,6 +96,12 @@ public class Player : MonoBehaviour
             }
             
         }
+        else if(other.CompareTag("acid")){
+            shouldDelay = true;
+            heart -= 1;
+            anime.SetBool("isHurt", true);
+            audioSource.PlayOneShot(ouchSound, volume);
+        }
         else if (other.CompareTag("projectile"))
         {
             shouldDelay = true;
