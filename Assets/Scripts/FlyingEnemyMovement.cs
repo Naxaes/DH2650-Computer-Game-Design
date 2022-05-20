@@ -250,6 +250,11 @@ public class FlyingEnemyMovement : MonoBehaviour
             anime.SetTrigger("isDead");
             isAlive = false;
         }
+        if (other.tag == "acid")
+        {
+            anime.SetTrigger("isDead");
+            isAlive = false;
+        }
     }
 
 

@@ -243,6 +243,11 @@ public class EnemyMovement : MonoBehaviour
             anime.SetTrigger("isDead");
             isAlive = false;
         }
+        if (other.tag == "acid")
+        {
+            anime.SetTrigger("isDead");
+            isAlive = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
