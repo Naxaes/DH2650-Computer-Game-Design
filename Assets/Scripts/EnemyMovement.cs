@@ -16,11 +16,13 @@ public class EnemyMovement : MonoBehaviour
      */
     public Transform playerTransform;
     public bool shouldChase = true;
+    public bool IsSmall;
     public float roamingRange = 7.0f;
     public float visionRange = 3.0f;
     public float speed = 0.05f;
     public float epsilon = 0.05f;
     public int direction = 1;
+    
 
     private Animator anime;
     
@@ -96,6 +98,10 @@ public class EnemyMovement : MonoBehaviour
         }
 
         if(direction != 0){
+            if(IsSmall){
+                transform.localScale = new Vector3(direction*(-0.7f),0.7f,0.7f);
+            }
+            else
             transform.localScale = new Vector3(direction*(-1.2337f),1.2337f,1.2337f);
         }
     }
