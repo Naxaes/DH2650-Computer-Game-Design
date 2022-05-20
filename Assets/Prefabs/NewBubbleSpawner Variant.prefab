@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3268370694223797553, guid: 882d3399aa8175249b32d13099d5a278, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3268370694223797553, guid: 882d3399aa8175249b32d13099d5a278, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1673081459
+      objectReference: {fileID: 0}
     - target: {fileID: 3268370694223797554, guid: 882d3399aa8175249b32d13099d5a278, type: 3}
       propertyPath: UVModule.mode
       value: 1
@@ -33,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 2fcaf8e16be274e9d8c05a77952fcf27, type: 3}
     - target: {fileID: 3268370694393596560, guid: 882d3399aa8175249b32d13099d5a278, type: 3}
       propertyPath: m_Name
-      value: NewBubbleSpawner
+      value: NewBubbleSpawner Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3268370694393596560, guid: 882d3399aa8175249b32d13099d5a278, type: 3}
       propertyPath: m_IsActive
