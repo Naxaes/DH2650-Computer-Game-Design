@@ -82,6 +82,12 @@ public class CharacterController2D : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+
+		if(m_Rigidbody2D.velocity.y < -30)
+		{
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, -30);
+		}
+
 	}
 
 
@@ -155,46 +161,7 @@ public class CharacterController2D : MonoBehaviour
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 		}
 		
-		/*
-		//Debug.Log(dashInput);
-		//canDash = true;
-		//dash direction
-		Vector2 vecToMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-		Vector2 dashDir = vecToMouse.normalized * (-1);
-		
-		if (dashInput && canDash)
-		{
-			Debug.Log("toyoyotoy");
-			isDashing = true;
-			canDash = false;
-			trailRenderer.emitting = true;
-
-			//Debug.Log(dashDir);
-			//dashDir = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-			StartCoroutine(StopDashing());
-		}
-
-		//animator.SetBool("IsDashing", isDashing);
-		//Debug.Log(dashDir);
-		if(isDashing)
-		{
-			//Debug.Log(dashDir);
-			m_Rigidbody2D.velocity = dashDir * dashSpeed;
-			return;
-		}
-		if(m_Grounded)
-		{
-			canDash = true;
-		}*/
 	}
-
-	/*
-	private IEnumerator StopDashing()
-	{
-		yield return new WaitForSeconds(dashTime);
-		trailRenderer.emitting = false;
-		isDashing = false;
-	}*/
 
 	private void Flip()
 	{

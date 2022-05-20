@@ -7,18 +7,16 @@ public class EnemyShooting : MonoBehaviour
     /*
      * - Public Variables -
      * target: the target the enemy should shoot at.
-     * enemy: the GameObject of the enemy that should be shooting.
      * projectile: the projectile GameObject that will be fired.
      * horizontalPower: the power, or speed, at which the projectile will be fired in x-direction.
      * verticalPower: the power, or speed, at which the projectile will be fired in positive y-direction.
      * gravityScale: the gravity-scale, or heaviness, of the projectile to be fired.
      * interval: the time between consecutive shots.
      */
-    public Transform target;
-    public GameObject enemy;
+    public GameObject target;
     public GameObject projectile;
     public float horizontalPower = 12f;
-    public float verticalPower = 0.08f;
+    public float verticalPower = 0.0f;
     public float gravityScale = 0.1f;
     public int interval = 3;
 
@@ -27,12 +25,13 @@ public class EnemyShooting : MonoBehaviour
 
     int direction;
     EnemyMovement movement;
-    private float nextTime = 0.0f;
+    private float nextTime;
     Vector3 projectileMotion;
 
     void Start()
     {
-        movement = enemy.GetComponent<EnemyMovement>();
+        nextTime = Time.time;
+        movement = GetComponent<EnemyMovement>();
         audioSource.Stop();
     }
 
@@ -43,6 +42,7 @@ public class EnemyShooting : MonoBehaviour
 
     void FireProjectilesInIntervals()
     {
+        Transform targetTransform = target.transform;
         direction = movement.direction;
         if (Time.time >= nextTime)
         {
@@ -52,7 +52,7 @@ public class EnemyShooting : MonoBehaviour
             {
                 rotation *= Quaternion.Euler(0, 180f, 0);
             }
-            GameObject newProjectile = Instantiate(projectile, transform.position - direction * target.right, rotation) as GameObject;
+            GameObject newProjectile = Instantiate(projectile, transform.position - direction * 1.01f * targetTransform.right, rotation) as GameObject;
             if (!newProjectile.GetComponent<Rigidbody2D>())
             {
                 newProjectile.AddComponent<Rigidbody2D>();
@@ -60,11 +60,10 @@ public class EnemyShooting : MonoBehaviour
             Rigidbody2D projectileRB = newProjectile.GetComponent<Rigidbody2D>();
             projectileRB.gravityScale = gravityScale;
             projectileRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-            projectileMotion = new Vector3(target.right.x, target.right.y - direction * verticalPower, target.right.z);
+            projectileMotion = new Vector3(targetTransform.right.x, targetTransform.right.y - direction * verticalPower, targetTransform.right.z);
             projectileRB.AddForce(projectileMotion * horizontalPower * -direction, ForceMode2D.Impulse);
 
             PlayProjectileSound();
-
         }
     }
 
