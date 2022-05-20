@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Ryan.unity
     guid: a2306b308decf4dc0a41e2852688ab5a
   - enabled: 1
-    path: Assets/Scenes/Demo.unity
+    path: Assets/Scenes/Demo_previous.unity
     guid: b1c3039889f73194eabbea996526fd8f
   m_configObjects: {}
