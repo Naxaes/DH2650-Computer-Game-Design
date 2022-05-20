@@ -113,18 +113,19 @@ public class FlyingEnemyMovement : MonoBehaviour
    * depending on boolean variables.
    */
     void FixedUpdate()
-    {   if(isAlive){
-        if (isMovingBack)
-        {
-            ResetPosition();
-            Debug.Log("Reseting");
+    {   
+        if(isAlive){
+            if (isMovingBack)
+            {
+                ResetPosition();
+                Debug.Log("Reseting");
+            }
+            else
+            {
+                Roam();
+                Debug.Log("Roaming");
+            }
         }
-        else
-        {
-            Roam();
-            Debug.Log("Roaming");
-        }
-    }
 
         Debug.DrawLine(startPosition, startPosition - directionMemory * new Vector3(roamingRange, 0, 0), new Color(1.0f, 1.0f, 0.0f));
     }
@@ -244,16 +245,6 @@ public class FlyingEnemyMovement : MonoBehaviour
      */
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "acid")
-        {
-            anime.SetTrigger("isDead");
-            isAlive = false;
-        }
-        if (other.tag == "spike")
-        {
-            anime.SetTrigger("isDead");
-            isAlive = false;
-        }
         if (other.tag == "projectile")
         {
             anime.SetTrigger("isDead");
@@ -265,6 +256,11 @@ public class FlyingEnemyMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("acid"))
+        {
+            anime.SetTrigger("isDead");
+            isAlive = false;
+        }
+        if (collision.gameObject.CompareTag("spike"))
         {
             anime.SetTrigger("isDead");
             isAlive = false;

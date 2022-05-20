@@ -7,13 +7,22 @@ public class EnemyDeath : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip deathSound;
     public float volume = 0.1f;
+    private bool onScreen;
+
+    private void Update()
+    {
+        onScreen = GetComponent<Renderer>().isVisible;
+    }
 
     private void OnDestroy()
     {
-        Debug.Log(deathSound);
-        if (this != null && audioSource != null && deathSound != null)
+        if (onScreen)
         {
-            audioSource.PlayOneShot(deathSound, volume);
+            if (this != null && audioSource != null && deathSound != null)
+            {
+                audioSource.PlayOneShot(deathSound, volume);
+            }
         }
+            
     }
 }

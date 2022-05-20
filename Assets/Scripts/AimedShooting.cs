@@ -2,36 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyingEnemyShooting : MonoBehaviour
+public class AimedShooting : MonoBehaviour
 {
     /*
      * - Public Variables -
      * target: the target the enemy should shoot at.
      * projectile: the projectile GameObject that will be fired.
-     * horizontalPower: the power, or speed, at which the projectile will be fired in x-direction.
-     * verticalPower: the power, or speed, at which the projectile will be fired in positive y-direction.
+     * power: the power at which the projectile should be fired.
      * gravityScale: the gravity-scale, or heaviness, of the projectile to be fired.
      * interval: the time between consecutive shots.
      */
     public GameObject target;
     public GameObject projectile;
-    public float horizontalPower = 8f;
-    public float verticalPower = -0.2f;
     public float gravityScale = 0.1f;
+    public float power = 2.0f;
     public int interval = 3;
 
     public AudioSource audioSource;
     public float volume = 0.1f;
 
-    int direction;
-    FlyingEnemyMovement movement;
     private float nextTime;
     Vector3 projectileMotion;
 
     void Start()
     {
         nextTime = Time.time;
-        movement = GetComponent<FlyingEnemyMovement>();
         audioSource.Stop();
     }
 
@@ -41,18 +36,13 @@ public class FlyingEnemyShooting : MonoBehaviour
     }
 
     void FireProjectilesInIntervals()
-    {
-        Transform targetTransform = target.transform;
-        direction = movement.direction;
+    {   
         if (Time.time >= nextTime)
         {
             nextTime += interval;
-            Quaternion rotation = transform.rotation;
-            if (direction == -1)
-            {
-                rotation *= Quaternion.Euler(0, 180f, 0);
-            }
-            GameObject newProjectile = Instantiate(projectile, transform.position - direction * 1.01f * targetTransform.right, rotation) as GameObject;
+            Vector3 targetPos = target.transform.position;
+            Vector3 projectileStartPos = 0.75f * transform.position + 0.25f * targetPos;
+            GameObject newProjectile = Instantiate(projectile, projectileStartPos, transform.rotation) as GameObject;
             if (!newProjectile.GetComponent<Rigidbody2D>())
             {
                 newProjectile.AddComponent<Rigidbody2D>();
@@ -60,8 +50,8 @@ public class FlyingEnemyShooting : MonoBehaviour
             Rigidbody2D projectileRB = newProjectile.GetComponent<Rigidbody2D>();
             projectileRB.gravityScale = gravityScale;
             projectileRB.constraints = RigidbodyConstraints2D.FreezeRotation;
-            projectileMotion = new Vector3(targetTransform.right.x, targetTransform.right.y - direction * verticalPower, targetTransform.right.z);
-            projectileRB.AddForce(projectileMotion * horizontalPower * -direction, ForceMode2D.Impulse);
+            projectileMotion = Vector3.Normalize(targetPos - transform.position) * power;
+            projectileRB.AddForce(projectileMotion, ForceMode2D.Impulse);
 
             PlayProjectileSound();
         }
